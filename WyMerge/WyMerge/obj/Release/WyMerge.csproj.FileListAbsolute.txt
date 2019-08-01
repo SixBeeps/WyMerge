@@ -1,0 +1,9 @@
+C:\Users\brand\source\repos\WyMerge\WyMerge\bin\Release\WyMerge.exe.config
+C:\Users\brand\source\repos\WyMerge\WyMerge\bin\Release\WyMerge.exe
+C:\Users\brand\source\repos\WyMerge\WyMerge\bin\Release\WyMerge.pdb
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.Form1.resources
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.Properties.Resources.resources
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.csproj.GenerateResource.cache
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.csproj.CoreCompileInputs.cache
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.exe
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.pdb
