@@ -7,3 +7,4 @@ C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.csproj.GenerateR
 C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.csproj.CoreCompileInputs.cache
 C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.exe
 C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.pdb
+C:\Users\brand\source\repos\WyMerge\WyMerge\obj\Release\WyMerge.csprojAssemblyReference.cache

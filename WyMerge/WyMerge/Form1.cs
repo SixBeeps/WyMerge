@@ -37,19 +37,29 @@ namespace WyMerge
         private void bLoadImg2_Click(object sender, EventArgs e)
         {
             Bitmap newBitmap = PromptBmp();
-            if (newBitmap == null) return;
-            bmp2 = newBitmap;
-            iDisplay2.Image = new Bitmap(newBitmap, new Size(256, 256));
-            if (bmp2.Width * bmp2.Height > 5000) MessageBox.Show("This bitmap has over 5000 pixels. Generating a WyMerge with this many pixels may take a long time or even cause the program to crash.", "Hold on...");
+            LoadBmp2(newBitmap);
         }
 
         private void bLoadImg1_Click(object sender, EventArgs e)
         {
             Bitmap newBitmap = PromptBmp();
+            LoadBmp1(newBitmap);
+        }
+
+        private void LoadBmp1(Bitmap newBitmap)
+        {
             if (newBitmap == null) return;
             bmp1 = newBitmap;
             iDisplay1.Image = new Bitmap(newBitmap, new Size(256, 256));
             if (bmp1.Width * bmp1.Height > 5000) MessageBox.Show("This bitmap has over 5000 pixels. Generating a WyMerge with this many pixels may take a long time or even cause the program to crash.", "Hold on...");
+        }
+
+        private void LoadBmp2(Bitmap newBitmap)
+        {
+            if (newBitmap == null) return;
+            bmp2 = newBitmap;
+            iDisplay2.Image = new Bitmap(newBitmap, new Size(256, 256));
+            if (bmp2.Width * bmp2.Height > 5000) MessageBox.Show("This bitmap has over 5000 pixels. Generating a WyMerge with this many pixels may take a long time or even cause the program to crash.", "Hold on...");
         }
 
         private void bGenerate_Click(object sender, EventArgs e)
@@ -118,31 +128,44 @@ namespace WyMerge
         public Dictionary<Pixel, Pixel> CreatePixelRelations(List<Pixel> baseImage, List<Pixel> newImage, int threshold)
         {
             Dictionary<Pixel, Pixel> pixelRelations = new Dictionary<Pixel, Pixel>();
-            foreach (Pixel px in baseImage)
+            if (cbColorBase.SelectedIndex != 2)
             {
-                bool canBreak = false;
-                foreach (Pixel px2 in newImage)
+                foreach (Pixel px in baseImage)
                 {
-                    float colDiff = 0;
-                    if (cbColorBase.SelectedIndex == 0)
+                    bool canBreak = false;
+                    foreach (Pixel px2 in newImage)
                     {
-                        colDiff = Math.Abs(px.c.GetHue() - px2.c.GetHue());
-                    } else if (cbColorBase.SelectedIndex == 1)
-                    {
-                        colDiff = Math.Abs(px.c.GetBrightness() - px2.c.GetBrightness());
+                        float colDiff = 0;
+                        if (cbColorBase.SelectedIndex == 0)
+                        {
+                            colDiff = Math.Abs(px.c.GetHue() - px2.c.GetHue());
+                        }
+                        else if (cbColorBase.SelectedIndex == 1)
+                        {
+                            colDiff = Math.Abs(px.c.GetBrightness() - px2.c.GetBrightness());
+                        }
+                        if (colDiff <= threshold)
+                        {
+                            pixelRelations.Add(px, new Pixel(px2));
+                            newImage.Remove(px2);
+                            groupBox2.Refresh();
+                            canBreak = true;
+                            break;
+                        }
                     }
-                    if (colDiff <= threshold)
-                    {
-                        pixelRelations.Add(px, new Pixel(px2));
-                        newImage.Remove(px2);
-                        groupBox2.Refresh();
-                        canBreak = true;
-                        break;
-                    }
+                    if (canBreak) continue;
+                    pixelRelations.Add(px, new Pixel(newImage[0]));
+                    newImage.RemoveAt(0);
                 }
-                if (canBreak) continue;
-                pixelRelations.Add(px, new Pixel(newImage[0]));
-                newImage.RemoveAt(0);
+            } else
+            {
+                Random r = new Random();
+                foreach (Pixel px in baseImage)
+                {
+                    int randPx = r.Next(0, newImage.Count);
+                    pixelRelations.Add(px, new Pixel(newImage[randPx]));
+                    newImage.RemoveAt(randPx);
+                }
             }
             return pixelRelations;
         }
@@ -277,7 +300,7 @@ namespace WyMerge
 
         private void lAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("WyMerge Version 1.0.0r\nCreated by SixBeeps in 2019\n\n\n.NET Framework Version 4.6.1", "About WyMerge", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("WyMerge Version 1.1.0r\nCreated by SixBeeps in 2019\n\n\n.NET Framework Version 4.6.1", "About WyMerge", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>

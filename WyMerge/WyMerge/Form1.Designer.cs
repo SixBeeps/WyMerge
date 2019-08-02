@@ -149,7 +149,7 @@
             // 
             this.bGenerate.Location = new System.Drawing.Point(7, 22);
             this.bGenerate.Name = "bGenerate";
-            this.bGenerate.Size = new System.Drawing.Size(187, 50);
+            this.bGenerate.Size = new System.Drawing.Size(181, 50);
             this.bGenerate.TabIndex = 0;
             this.bGenerate.Text = "Generate WyMerge!";
             this.bGenerate.UseVisualStyleBackColor = true;
@@ -171,10 +171,12 @@
             // 
             // cbColorBase
             // 
+            this.cbColorBase.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbColorBase.FormattingEnabled = true;
             this.cbColorBase.Items.AddRange(new object[] {
             "Based on Hue",
-            "Based on Brightness"});
+            "Based on Brightness",
+            "No Basis (Random)"});
             this.cbColorBase.Location = new System.Drawing.Point(6, 159);
             this.cbColorBase.Name = "cbColorBase";
             this.cbColorBase.Size = new System.Drawing.Size(182, 21);
@@ -183,12 +185,14 @@
             // 
             // tbThreshold
             // 
+            this.tbThreshold.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbThreshold.Location = new System.Drawing.Point(10, 107);
             this.tbThreshold.Maximum = 255;
             this.tbThreshold.Name = "tbThreshold";
             this.tbThreshold.Size = new System.Drawing.Size(178, 45);
             this.tbThreshold.TabIndex = 3;
             this.tbThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbThreshold.Value = 16;
             this.tbThreshold.Scroll += new System.EventHandler(this.tbThreshold_Scroll);
             // 
             // tThreshold
@@ -202,6 +206,7 @@
             // 
             // tbFrames
             // 
+            this.tbFrames.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbFrames.Location = new System.Drawing.Point(10, 39);
             this.tbFrames.Maximum = 100;
             this.tbFrames.Minimum = 2;
@@ -240,13 +245,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 462);
             this.Controls.Add(this.lAbout);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.title);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "WyMerge";
