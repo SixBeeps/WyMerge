@@ -1,5 +1,6 @@
 # WyMerge
 Interesting image transition algorithm based on lerping
+
 [Download the latest version here](https://github.com/SixBeeps/WyMerge/releases)
 
 ## What is WyMerge
